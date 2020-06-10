@@ -1,0 +1,44 @@
+{
+  "name": {
+    "first": "Skyler",
+    "middle": "Tiannong",
+    "last": "Dong"
+  },
+  "occupation": "Aspiring web developer",
+  "description": "I'm an aspiring web developer and an amateur photographer",
+  "image": "",
+  "bio": "",
+  "contactmessage": "",
+  "email": "dongskyler@gmail.com",
+  "phone": "608-481-3521",
+  "address": {
+    "street": "",
+    "city": "Austin",
+    "state": "Texas",
+    "zip": ""
+  },
+  "website": "https://skylerdong.com",
+  "resumedownload": "https://skylerdong.com/resume/",
+  "social": [
+    {
+      "name": "email",
+      "url": "mailto:dongskyler@gmail.com",
+      "className": "far fa-envelope"
+    },
+    {
+      "name": "linkedin",
+      "url": "https://www.linkedin.com/in/skylerdong/",
+      "className": "fab fa-linkedin-in"
+    },
+    {
+      "name": "github",
+      "url": "https://github.com/dongskyler",
+      "className": "fab fa-github"
+    },
+    {
+      "name": "instagram",
+      "url": "https://instagram.com/skylerdong.studio",
+      "className": "fab fa-instagram"
+    }
+  ]
+}
