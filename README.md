@@ -1,16 +1,24 @@
-# Working Repository for <api.skylerdong.com>
+# Working Repository for api.skylerdong.com
 
 Working repo: [https://github.com/dongskyler/api.skylerdong.com](https://github.com/dongskyler/api.skylerdong.com)
 
-**_Note that all websites mentioned in this README might be down, as I&apos;m currently configuring A records and the server itself._**
+[![CodeFactor](https://www.codefactor.io/repository/github/dongskyler/api.skylerdong.com/badge)](https://www.codefactor.io/repository/github/dongskyler/api.skylerdong.com)
+[![DeepScan grade](https://deepscan.io/api/teams/9441/projects/12040/branches/181474/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=9441&pid=12040&bid=181474)
+![Node.js CI](https://github.com/dongskyler/api.skylerdong.com/workflows/Node.js%20CI/badge.svg)
 
 ***
 
 ## Description
 
-This repository is the active working repository for the back end of my websites, including <skylerdong.com>, <skylerdong.studio> and their subdomains.
+This repository is the active working repository for the back end of my websites, including [skylerdong.com](skylerdong.com), [skylerdong.studio](skylerdong.studio) and their subdomains.
 
 The API runs on a [virtual private server (VPS)](https://en.wikipedia.org/wiki/Virtual_private_server) powered by [CentOS 8](https://www.centos.org). 
+
+***
+
+## Architecture
+
+![Architecture](./doc/architecture_gen3.svg)
 
 ***
 
