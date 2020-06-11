@@ -3,6 +3,7 @@ const createError = require('http-errors');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const favicon = require('serve-favicon');
 
 const bodyParser = require('body-parser');
 const graphqlHttp = require('express-graphql');
@@ -16,8 +17,6 @@ const blogsRouter = require('./routes/blogs');
 
 const app = express(); // create express server
 
-// const blogs = [];
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -27,6 +26,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(bodyParser.json()); // use body-parser middleware to parse incoming json
 
 app.use('/', indexRouter);
@@ -37,34 +37,33 @@ app.use('/blogs', blogsRouter);
 app.use('/graphql', graphqlHttp({ // set up our graphql endpoint with the express-graphql middleware
   // build a graphql schema
   schema: buildSchema(`
-        type Blog {
-            _id: ID!
-            title: String!
-            text: String!
-            description: String!
-            date: String
-        }
+    type Blog {
+      _id: ID!
+      title: String!
+      text: String!
+      description: String!
+      date: String
+    }
 
-        input BlogInput {
-            title: String!
-            text: String!
-            description: String!
-            date: String
-        }
+    input BlogInput {
+      title: String!
+      text: String!
+      description: String!
+      date: String
+    }
 
+    type blogQuery {
+      blogs: [Blog!]!
+    }
 
-        type blogQuery {
-            blogs: [Blog!]!
-        }
+    type blogMutation {
+      createBlog(blogInput: BlogInput): Blog
+    }
 
-        type blogMutation {
-            createBlog(blogInput: BlogInput): Blog
-        }
-
-        schema {
-            query: blogQuery
-            mutation: blogMutation
-        }
+    schema {
+      query: blogQuery
+      mutation: blogMutation
+    }
     `),
   rootValue: {
     blogs: () => {
