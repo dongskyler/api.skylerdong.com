@@ -7,6 +7,7 @@ const logger = require('morgan');
 const bodyParser = require('body-parser');
 const graphqlHttp = require('express-graphql');
 const { buildSchema } = require('graphql');
+const Blog = require('./models/blog');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -15,7 +16,7 @@ const blogsRouter = require('./routes/blogs');
 
 const app = express(); // create express server
 
-const blogs = [];
+// const blogs = [];
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -67,21 +68,29 @@ app.use('/graphql', graphqlHttp({ // set up our graphql endpoint with the expres
     `),
   rootValue: {
     blogs: () => {
-      return blogs; // return blogs instead of hardcoded array
+      // return all the blogs unfiltered using Model
+      return Blog.find().then(blogs => {
+        return blogs
+      }).catch(err => {
+        throw err
+      })
     },
     createBlog: (args) => {
-      // const blogText = args.text
-      // return blogText
-      const blog = { // create new blog object
-        _id: "123456", // this is hardcoded temporarily
+      const blog = new Blog({
         title: args.blogInput.title,
         text: args.blogInput.text,
         description: args.blogInput.description,
-        date: new Date().toISOString
-      }
+        date: new Date()
+      })
 
-      blogs.push(blog); // push new blog object onto array
-      return blog;
+      // save new blog using model which will save in MongoDB
+      return blog.save().then(result => {
+        console.log(result)
+        return result
+      }).catch(err => {
+        console.log(err)
+        throw err
+      })
     }
   }, // an object with resolver functions
   graphiql: true // enable the graphiql interface to test our queries
