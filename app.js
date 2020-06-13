@@ -6,16 +6,44 @@ const logger = require('morgan');
 const favicon = require('serve-favicon');
 
 const bodyParser = require('body-parser');
-const graphqlHttp = require('express-graphql');
-const { buildSchema } = require('graphql');
-const Blog = require('./models/blog');
+// const graphqlHttp = require('express-graphql');
+// const { buildSchema } = require('graphql');
+// const { gql } = require('apollo-server');
+const { ApolloServer, gql } = require('apollo-server-express');
+// const { typeDefs, resolvers } = require('./schema');
+const graphqlExpress = require('apollo-server-express');
 
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
-const imagesRouter = require('./routes/images');
-const blogsRouter = require('./routes/blogs');
 
 const app = express(); // create express server
+
+const typeDefs = gql`
+  type Query {
+    me: User
+  }
+ 
+  type User {
+    username: String!
+  }
+`;
+ 
+const resolvers = {
+  Query: {
+    me: () => {
+      return {
+        username: 'Robin Wieruch',
+      };
+    },
+  },
+};
+
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+});
+
+// server.applyMiddleware({ app });
+server.applyMiddleware({ app, path: '/graphql' });
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -30,70 +58,52 @@ app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(bodyParser.json()); // use body-parser middleware to parse incoming json
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/images', imagesRouter);
-app.use('/blogs', blogsRouter);
 
-app.use('/graphql', graphqlHttp({ // set up our graphql endpoint with the express-graphql middleware
-  // build a graphql schema
-  schema: buildSchema(`
-    type Blog {
-      _id: ID!
-      title: String!
-      text: String!
-      description: String!
-      date: String
-    }
+// Apollo server
+const myGraphQLSchema = gql`
+  # This "Book" type defines the queryable fields for every book in our data source.
+  type Book {
+    title: String
+    author: String
+  }
 
-    input BlogInput {
-      title: String!
-      text: String!
-      description: String!
-      date: String
-    }
+  # The "Query" type is special: it lists all of the available queries that
+  # clients can execute, along with the return type for each. In this
+  # case, the "books" query returns an array of zero or more Books (defined above).
+  type Query {
+    books: [Book]
+  }
+`;
 
-    type blogQuery {
-      blogs: [Blog!]!
-    }
+// Hardcoded dummy dataset
+const books = [
+  {
+    title: 'Harry Potter and the Chamber of Secrets',
+    author: 'J.K. Rowling',
+  },
+  {
+    title: 'Jurassic Park',
+    author: 'Michael Crichton',
+  },
+];
 
-    type blogMutation {
-      createBlog(blogInput: BlogInput): Blog
-    }
+// Resolver
+const resolvers = {
+  Query: {
+    books: () => books,
+  },
+};
 
-    schema {
-      query: blogQuery
-      mutation: blogMutation
-    }
-    `),
-  rootValue: {
-    blogs: () => {
-      // return all the blogs unfiltered using Model
-      return Blog.find().then(blogs => {
-        return blogs
-      }).catch(err => {
-        throw err
-      })
-    },
-    createBlog: (args) => {
-      const blog = new Blog({
-        title: args.blogInput.title,
-        text: args.blogInput.text,
-        description: args.blogInput.description,
-        date: new Date()
-      })
+app.use('/graphql', bodyParser.json(), graphqlExpress({ schema: myGraphQLSchema }));
 
-      // save new blog using model which will save in MongoDB
-      return blog.save().then(result => {
-        console.log(result)
-        return result
-      }).catch(err => {
-        console.log(err)
-        throw err
-      })
-    }
-  }, // an object with resolver functions
-  graphiql: true // enable the graphiql interface to test our queries
-}))
+if (process.env.NODE_ENV === "development") {
+  app.use(
+    '/graphiql',
+    graphiqlExpress({
+      endpointURL: '/graphql',
+    }),
+  );
+};
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
