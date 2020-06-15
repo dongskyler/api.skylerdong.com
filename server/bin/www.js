@@ -15,10 +15,10 @@ dotenv.config();
 /**
  * Normalize a port into a number, string, or false.
  */
-function normalizePort(val) {
+const normalizePort = (val) => {
   const port = parseInt(val, 10);
 
-  if (typeof port !== 'number') {
+  if (Number.isNaN(port)) {
     // named pipe
     return val;
   }
@@ -29,7 +29,7 @@ function normalizePort(val) {
   }
 
   return false;
-}
+};
 
 /**
  * Get port from environment and store in Express.
@@ -43,21 +43,9 @@ app.set('port', port);
 const server = http.createServer(app);
 
 /**
- * Listen on provided port, on all network interfaces.
- */
-// connect to our MongoDB server.
-// mongoose.connect(
-//   `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_CLUSTER}/${process.env.MONGO_DB}?retryWrites=true&w=majority`
-// ).then(() => {
-//   server.listen(port);
-// }).catch(err => {
-//   console.log(err);
-// })
-
-/**
  * Event listener for HTTP server "error" event.
  */
-function onError(error) {
+const onError = (error) => {
   if (error.syscall !== 'listen') {
     throw error;
   }
@@ -77,16 +65,28 @@ function onError(error) {
     default:
       throw error;
   }
-}
+};
 
 /**
  * Event listener for HTTP server "listening" event.
  */
-function onListening() {
+const onListening = () => {
   const addr = server.address();
   const bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port;
   debug('Listening on ' + bind);
-}
+};
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+// connect to our MongoDB server.
+// mongoose.connect(
+//   `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_CLUSTER}/${process.env.MONGO_DB}?retryWrites=true&w=majority`
+// ).then(() => {
+//   server.listen(port);
+// }).catch(err => {
+//   console.log(err);
+// })
 
 server.listen(port);
 server.on('error', onError);
