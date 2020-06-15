@@ -8,27 +8,10 @@
     "test": "jest",
     "build": "npm-run-all clean transpile",
     "dev": "NODE_ENV=development npm-run-all build server",
-    "dev:watch": "nodemon",
+    "dev:watch": "nodemon --config ./nodemon.json",
     "server": "node ./dist-server/bin/www",
     "production": "NODE_ENV=production npm-run-all build server",
     "start": "yarn production"
-  },
-  "babel": {
-    "presets": [
-      "@babel/preset-env"
-    ]
-  },
-  "nodemonConfig": {
-    "exec": "yarn dev",
-    "watch": [
-      "server/*",
-      "public/*"
-    ],
-    "ignore": [
-      "**/__tests__/**",
-      "*.test.js",
-      "*.spec.js"
-    ]
   },
   "jest": {
     "testEnvironment": "node"
