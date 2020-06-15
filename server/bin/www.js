@@ -3,13 +3,6 @@
 /**
  * Module dependencies.
  */
-
-// const app = require('../app');
-// const debug = require('debug')('api.skylerdong.com:server');
-// const http = require('http');
-// const dotenv = require('dotenv');
-// const mongoose = require('mongoose');
-
 import app from '../app';
 import debugLib from 'debug';
 const debug = debugLib('api.skylerdong.com:server');
@@ -22,20 +15,17 @@ dotenv.config();
 /**
  * Get port from environment and store in Express.
  */
-
 const port = normalizePort(process.env.PORT || '9000');
 app.set('port', port);
 
 /**
  * Create HTTP server.
  */
-
 const server = http.createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.
  */
-
 // connect to our MongoDB server.
 // mongoose.connect(
 //   `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_CLUSTER}/${process.env.MONGO_DB}?retryWrites=true&w=majority`
@@ -52,7 +42,6 @@ server.on('listening', onListening);
 /**
  * Normalize a port into a number, string, or false.
  */
-
 function normalizePort(val) {
   const port = parseInt(val, 10);
 
@@ -72,15 +61,12 @@ function normalizePort(val) {
 /**
  * Event listener for HTTP server "error" event.
  */
-
 function onError(error) {
   if (error.syscall !== 'listen') {
     throw error;
   }
 
-  const bind = typeof port === 'string'
-    ? 'Pipe ' + port
-    : 'Port ' + port;
+  const bind = typeof port === 'string' ? 'Pipe ' + port : 'Port ' + port;
 
   // handle specific listen errors with friendly messages
   switch (error.code) {
@@ -100,11 +86,8 @@ function onError(error) {
 /**
  * Event listener for HTTP server "listening" event.
  */
-
 function onListening() {
   const addr = server.address();
-  const bind = typeof addr === 'string'
-    ? 'pipe ' + addr
-    : 'port ' + addr.port;
+  const bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }

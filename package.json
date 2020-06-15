@@ -5,13 +5,13 @@
   "scripts": {
     "clean": "rimraf dist-server",
     "transpile": "babel ./server --out-dir dist-server",
-    "test": "jest",
     "build": "npm-run-all clean transpile",
+    "test": "jest",
     "dev": "NODE_ENV=development npm-run-all build server",
     "dev:watch": "nodemon --config ./nodemon.json",
     "server": "node ./dist-server/bin/www",
-    "production": "NODE_ENV=production npm-run-all build server",
-    "start": "yarn production"
+    "prod": "NODE_ENV=production npm-run-all build server",
+    "start": "npm-run-all prod"
   },
   "jest": {
     "testEnvironment": "node"
@@ -32,7 +32,6 @@
     "jade": "~1.11.0",
     "mongoose": "^5.9.18",
     "morgan": "~1.10.0",
-    "npm-run-all": "^4.1.5",
     "serve-favicon": "^2.5.0",
     "uuid": "^8.1.0"
   },
@@ -42,9 +41,16 @@
     "@babel/preset-env": "^7.10.2",
     "axios": "^0.19.2",
     "chai": "^4.2.0",
+    "eslint": "^7.2.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-prettier": "^3.1.4",
     "jest": "^26.0.1",
     "mocha": "^8.0.1",
     "nodemon": "^2.0.4",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.0.5",
     "rimraf": "^3.0.2"
   }
 }
