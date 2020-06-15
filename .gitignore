@@ -24,6 +24,7 @@
 ehthumbs.db
 Thumbs.db
 @turtledb
+.eslintcache
 
 npm-debug.log*
 yarn-debug.log*
