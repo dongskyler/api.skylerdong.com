@@ -17,7 +17,8 @@ module.exports = {
         "sourceType": "module"
     },
     "rules": {
-        "prettier/prettier": "error"
+        "prettier/prettier": "error",
+        "no-unused-vars": ["error", { "argsIgnorePattern": "next" }]
     },
     "plugins": [
         "prettier"

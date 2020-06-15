@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "format": "prettier --write \"./server/**/*.js\"",
+    "lint": "eslint ./server/**/*.js --cache --fix-dry-run",
     "clean": "rimraf dist-server",
     "transpile": "babel ./server --out-dir dist-server",
     "build": "npm-run-all clean transpile",
@@ -24,8 +25,8 @@
   },
   "lint-staged": {
     "./server/**/*.js": [
-      "eslint --cache --fix",
-      "prettier --write"
+      "prettier --write",
+      "eslint --cache --fix-dry-run"
     ]
   },
   "dependencies": {
