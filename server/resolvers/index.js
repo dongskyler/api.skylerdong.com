@@ -62,10 +62,10 @@ const resolvers = {
   },
 
   User: {
-    messages: user => {
+    messages: (user) => {
       return Object.values(messages).filter(
-        message => message.userId === user.id
-      )
+        (message) => message.userId === user.id
+      );
     },
   },
 
@@ -73,9 +73,9 @@ const resolvers = {
     // user: (parent, args, { me }) => {
     //   return me;
     // },
-    user: message => {
+    user: (message) => {
       return users[message.userId];
-    }
+    },
   },
 };
 
