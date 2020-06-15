@@ -10,10 +10,12 @@
 // const dotenv = require('dotenv');
 // const mongoose = require('mongoose');
 
-const app = require('../app');
-const debug = require('debug')('api.skylerdong.com:server');
-const http = require('http');
-const dotenv = require('dotenv');
+import app from '../app';
+import debugLib from 'debug';
+const debug = debugLib('api.skylerdong.com:server');
+import http from 'http';
+import dotenv from 'dotenv';
+// import mongoose from 'mongoose';
 
 dotenv.config();
 
@@ -43,7 +45,7 @@ const server = http.createServer(app);
 //   console.log(err);
 // })
 
-// server.listen(port);
+server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
 

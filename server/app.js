@@ -37,7 +37,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, '..', 'public', 'favicon.ico')));
 app.use(bodyParser.json()); // use body-parser middleware to parse incoming json
 
 app.use('/', indexRouter);
@@ -67,4 +67,6 @@ app.use(function (err, req, res, next) {
   res.render('error');
 });
 
-module.exports = app;
+// module.exports = app;
+
+export default app;
