@@ -10,15 +10,21 @@ Working repo: [https://github.com/dongskyler/api.skylerdong.com](https://github.
 
 ## Description
 
-This repository is the active working repository for the back end of my websites, including [skylerdong.com](skylerdong.com), [skylerdong.studio](skylerdong.studio) and their subdomains.
+This is the active working repository for the back-end of my websites at [api.skylerdong.com](api.skylerdong.com).
 
-The API runs on a [virtual private server (VPS)](https://en.wikipedia.org/wiki/Virtual_private_server) powered by [CentOS 8](https://www.centos.org). 
+This API supports my websites, including [skylerdong.com](skylerdong.com), [skylerdong.studio](skylerdong.studio) and their subdomains.
 
 ***
 
 ## Architecture
 
 ![Architecture](./doc/architecture_gen3.svg)
+
+I built this API with [Node](https://nodejs.org/en/) and [Express](https://expressjs.com).
+
+API queries are handled by [Apollo server](https://www.apollographql.com/docs/) and [GraphQL](https://graphql.org/) that communicate with noSQL database [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) hosted on [Amazon Web Services](https://www.mongodb.com/cloud/atlas/aws-mongodb).
+
+Full-text search is powered by [ElasticSearch](https://www.elastic.co/), primarily for my blogs.
 
 ***
 
