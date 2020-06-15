@@ -4,11 +4,18 @@
  * Module dependencies.
  */
 
-const app = require('../app');
-const debug = require('debug')('api.skylerdong.com:server');
-const http = require('http');
-const dotenv = require('dotenv');
-const mongoose = require('mongoose');
+// const app = require('../app');
+// const debug = require('debug')('api.skylerdong.com:server');
+// const http = require('http');
+// const dotenv = require('dotenv');
+// const mongoose = require('mongoose');
+
+import app from '../app';
+import debugLib from 'debug';
+const debug = debugLib('api.skylerdong.com:server');
+import http from 'http';
+import dotenv from 'dotenv';
+// import mongoose from 'mongoose';
 
 dotenv.config();
 
@@ -30,15 +37,15 @@ const server = http.createServer(app);
  */
 
 // connect to our MongoDB server.
-mongoose.connect(
-  `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_CLUSTER}/${process.env.MONGO_DB}?retryWrites=true&w=majority`
-).then(() => {
-  server.listen(port);
-}).catch(err => {
-  console.log(err);
-})
+// mongoose.connect(
+//   `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_CLUSTER}/${process.env.MONGO_DB}?retryWrites=true&w=majority`
+// ).then(() => {
+//   server.listen(port);
+// }).catch(err => {
+//   console.log(err);
+// })
 
-// server.listen(port);
+server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
 
