@@ -7,9 +7,8 @@ import app from '../app';
 import debugLib from 'debug';
 const debug = debugLib('api.skylerdong.com:server');
 import http from 'http';
+import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-// import mongoose from 'mongoose';
-
 dotenv.config();
 
 /**
@@ -77,17 +76,30 @@ const onListening = () => {
 };
 
 /**
+ * Connect to MongoDB server
+ */
+mongoose
+  .connect(
+    `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_CLUSTER}/${process.env.MONGO_DB}?retryWrites=true&w=majority`,
+    {
+      ssl: true,
+      connectTimeoutMS: 3000,
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
+  )
+  .then(() => {
+    server.listen(port);
+    server.on('error', onError);
+    server.on('listening', onListening);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+/**
  * Listen on provided port, on all network interfaces.
  */
-// connect to our MongoDB server.
-// mongoose.connect(
-//   `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_CLUSTER}/${process.env.MONGO_DB}?retryWrites=true&w=majority`
-// ).then(() => {
-//   server.listen(port);
-// }).catch(err => {
-//   console.log(err);
-// })
-
-server.listen(port);
-server.on('error', onError);
-server.on('listening', onListening);
+// server.listen(port);
+// server.on('error', onError);
+// server.on('listening', onListening);
