@@ -6,7 +6,7 @@ Working repo: [https://github.com/dongskyler/api.skylerdong.com](https://github.
 [![DeepScan grade](https://deepscan.io/api/teams/9441/projects/12040/branches/181474/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=9441&pid=12040&bid=181474)
 ![Node.js CI](https://github.com/dongskyler/api.skylerdong.com/workflows/Node.js%20CI/badge.svg)
 
-***
+---
 
 ## Description
 
@@ -14,7 +14,7 @@ This is the active working repository for the back-end of my websites at [api.sk
 
 This API supports my websites, including [skylerdong.com](skylerdong.com), [skylerdong.studio](skylerdong.studio) and their subdomains.
 
-***
+---
 
 ## Architecture
 
@@ -26,7 +26,7 @@ API queries are handled by [Apollo server](https://www.apollographql.com/docs/) 
 
 Full-text search is powered by [ElasticSearch](https://www.elastic.co/), primarily for my blogs.
 
-***
+---
 
 ## Copyright Notice
 
@@ -34,7 +34,7 @@ The code is under MIT license.
 
 However, my images, blogs and databases are not. It is always appreciated when you refer back to my website. However, all images, blogs and databases appearing on my root domains and all subdomains are not to be downloaded or reproduced in any way without permission. If you intend to use my images or blogs by any means or purchase prints, you are welcome to contact me at [dongskyler@gmail.com](mailto:dongskyler@gmail.com). Thank you.
 
-***
+---
 
 ## Server Specs
 
