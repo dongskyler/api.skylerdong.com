@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "format": "prettier --write \"./server/**/*.js\"",
-    "lint": "eslint ./server/**/*.js --cache --fix-dry-run",
+    "lint": "eslint \"./server/**/*.js\" --cache --fix-dry-run",
     "clean": "rimraf dist-server",
     "transpile": "babel ./server --out-dir dist-server",
     "build": "npm-run-all clean transpile",
@@ -33,7 +33,10 @@
     "apollo-server": "^2.14.3",
     "apollo-server-express": "^2.14.3",
     "body-parser": "^1.19.0",
+    "clean-css": "^4.1.11",
+    "constantinople": "3.1.1",
     "cookie-parser": "~1.4.4",
+    "core-js": "3",
     "cors": "^2.8.5",
     "debug": "~4.1.1",
     "dotenv": "^8.2.0",
@@ -42,10 +45,11 @@
     "express-graphql": "^0.9.0",
     "graphql": "^14.0.0",
     "http-errors": "~1.7.3",
-    "jade": "~1.11.0",
     "mongoose": "^5.9.18",
     "morgan": "~1.10.0",
+    "pug": "^3.0.0",
     "serve-favicon": "^2.5.0",
+    "uglify-js": "^2.6.0",
     "uuid": "^8.1.0"
   },
   "devDependencies": {
