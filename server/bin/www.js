@@ -3,14 +3,14 @@
 /**
  * Module dependencies.
  */
-import debugLib from 'debug';
+
+import dotenv from 'dotenv';
+dotenv.config();
 import http from 'http';
 import mongoose from 'mongoose';
-import dotenv from 'dotenv';
-import app from '../app';
-
+import debugLib from 'debug';
 const debug = debugLib('api.skylerdong.com:server');
-dotenv.config();
+import app from '../app';
 
 /**
  * Normalize a port into a number, string, or false.
@@ -85,15 +85,16 @@ mongoose
     {
       ssl: true,
       connectTimeoutMS: 3000,
+      useCreateIndex: true,
       useNewUrlParser: true,
       useUnifiedTopology: true,
     }
   )
   .then(() => {
-    console.log('Connected to MongoDB!');
+    console.log(`Successfully connected to MongoDB cluster ${process.env.MONGO_CLUSTER}.`);
   })
   .catch((err) => {
-    console.log('There are issues with connecting to MongoDB!');
+    console.log('Error: Cannot connect to MongoDB cluster ${process.env.MONGO_CLUSTER}!');
     console.log(err);
   });
 

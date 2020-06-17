@@ -9,21 +9,29 @@ import favicon from 'serve-favicon';
 import { ApolloServer } from 'apollo-server-express';
 import indexRouter from './routes/index';
 
-import schema from './schema';
-import resolvers from './resolvers';
-import models from './models';
+// import schema from './schema';
+// import resolvers from './resolvers';
+// import models from './models';
+
+import typeDefs from './graphql/typeDefs';
+import resolvers from './graphql/resolvers';
 
 // Create Express server
 const app = express();
 
 // Create Apollo server
+// const server = new ApolloServer({
+//   typeDefs: schema,
+//   resolvers,
+//   context: {
+//     models,
+//     me: models.users[1],
+//   },
+// });
+
 const server = new ApolloServer({
-  typeDefs: schema,
+  typeDefs,
   resolvers,
-  context: {
-    models,
-    me: models.users[1],
-  },
 });
 
 server.applyMiddleware({ app, path: '/graphql' });
