@@ -1,4 +1,4 @@
-let users = {
+const users = {
   1: {
     id: '1',
     username: 'Andy',
@@ -11,7 +11,7 @@ let users = {
   },
 };
 
-let messages = {
+const messages = {
   1: {
     id: '1',
     text: 'Hello World',

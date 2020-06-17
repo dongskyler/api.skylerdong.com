@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "format": "prettier './server/**/*.js' --write",
-    "lint": "eslint './server/**/*.js' --cache --fix",
+    "format": "prettier './**/*.{js,json,html}' --write",
+    "lint": "eslint './**/*.js' --cache --fix",
     "clean": "rimraf dist-server",
     "transpile": "babel ./server --out-dir dist-server",
     "build": "npm-run-all clean transpile",
@@ -24,8 +24,10 @@
     }
   },
   "lint-staged": {
-    "./server/**/*.js": [
-      "prettier --write",
+    "./**/*.{js,json,html}": [
+      "prettier --write"
+    ],
+    "./**/*.js": [
       "eslint --cache --fix"
     ]
   },

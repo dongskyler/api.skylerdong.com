@@ -3,12 +3,13 @@
 /**
  * Module dependencies.
  */
-import app from '../app';
 import debugLib from 'debug';
-const debug = debugLib('api.skylerdong.com:server');
 import http from 'http';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+import app from '../app';
+
+const debug = debugLib('api.skylerdong.com:server');
 dotenv.config();
 
 /**
@@ -49,16 +50,16 @@ const onError = (error) => {
     throw error;
   }
 
-  const bind = typeof port === 'string' ? 'Pipe ' + port : 'Port ' + port;
+  const bind = typeof port === 'string' ? `Pipe ${port}` : `Port ${port}`;
 
   // handle specific listen errors with friendly messages
   switch (error.code) {
     case 'EACCES':
-      console.error(bind + ' requires elevated privileges');
+      console.error(`${bind} requires elevated privileges`);
       process.exit(1);
       break;
     case 'EADDRINUSE':
-      console.error(bind + ' is already in use');
+      console.error(`${bind} is already in use`);
       process.exit(1);
       break;
     default:
@@ -71,8 +72,8 @@ const onError = (error) => {
  */
 const onListening = () => {
   const addr = server.address();
-  const bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port;
-  debug('Listening on ' + bind);
+  const bind = typeof addr === 'string' ? `pipe ${addr}` : `port ${addr.port}`;
+  debug(`Listening on ${bind}`);
 };
 
 /**
@@ -89,17 +90,16 @@ mongoose
     }
   )
   .then(() => {
-    server.listen(port);
-    server.on('error', onError);
-    server.on('listening', onListening);
+    console.log('Connected to MongoDB!');
   })
   .catch((err) => {
+    console.log('There are issues with connecting to MongoDB!');
     console.log(err);
   });
 
 /**
  * Listen on provided port, on all network interfaces.
  */
-// server.listen(port);
-// server.on('error', onError);
-// server.on('listening', onListening);
+server.listen(port);
+server.on('error', onError);
+server.on('listening', onListening);
