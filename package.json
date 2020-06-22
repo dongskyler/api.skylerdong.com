@@ -30,7 +30,7 @@
     ]
   },
   "dependencies": {
-    "apollo-server": "^2.14.3",
+    "apollo-server": "^2.15.0",
     "apollo-server-express": "^2.14.3",
     "body-parser": "^1.19.0",
     "clean-css": "^4.1.11",
