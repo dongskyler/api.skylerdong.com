@@ -91,10 +91,14 @@ mongoose
     }
   )
   .then(() => {
-    console.log(`Successfully connected to MongoDB cluster ${process.env.MONGO_CLUSTER}.`);
+    console.log(
+      `Successfully connected to MongoDB cluster ${process.env.MONGO_CLUSTER}.`
+    );
   })
   .catch((err) => {
-    console.log('Error: Cannot connect to MongoDB cluster ${process.env.MONGO_CLUSTER}!');
+    console.log(
+      'Error: Cannot connect to MongoDB cluster ${process.env.MONGO_CLUSTER}!'
+    );
     console.log(err);
   });
 

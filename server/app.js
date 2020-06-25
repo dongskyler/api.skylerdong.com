@@ -13,8 +13,11 @@ import indexRouter from './routes/index';
 // import resolvers from './resolvers';
 // import models from './models';
 
-import typeDefs from './graphql/typeDefs';
-import resolvers from './graphql/resolvers';
+// import typeDefs from './graphql/typeDefs';
+// import resolvers from './graphql/resolvers';
+
+import schema from './schema/basics';
+import resolvers from './resolvers/index.js';
 
 // Create Express server
 const app = express();
@@ -30,7 +33,7 @@ const app = express();
 // });
 
 const server = new ApolloServer({
-  typeDefs,
+  typeDefs: schema,
   resolvers,
 });
 
