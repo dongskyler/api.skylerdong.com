@@ -5,12 +5,13 @@
  */
 
 import dotenv from 'dotenv';
-dotenv.config();
 import http from 'http';
 import mongoose from 'mongoose';
 import debugLib from 'debug';
-const debug = debugLib('api.skylerdong.com:server');
 import app from '../app';
+
+dotenv.config();
+const debug = debugLib('api.skylerdong.com:server');
 
 /**
  * Normalize a port into a number, string, or false.

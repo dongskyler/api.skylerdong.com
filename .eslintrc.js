@@ -17,5 +17,5 @@ module.exports = {
     'no-unused-vars': ['error', { argsIgnorePattern: 'next' }],
     'prettier/prettier': 'error',
   },
-  plugins: ['prettier'],
+  plugins: ['prettier', 'graphql'],
 };
