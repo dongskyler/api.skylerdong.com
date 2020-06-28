@@ -16,8 +16,8 @@ import indexRouter from './routes/index';
 // import typeDefs from './graphql/typeDefs';
 // import resolvers from './graphql/resolvers';
 
-import schema from './schema/basics';
-import resolvers from './resolvers/index.js';
+// import schema from './schema/basics';
+// import resolvers from './resolvers/index.js';
 
 // Create Express server
 const app = express();
@@ -32,12 +32,12 @@ const app = express();
 //   },
 // });
 
-const server = new ApolloServer({
-  typeDefs: schema,
-  resolvers,
-});
+// const server = new ApolloServer({
+//   typeDefs: schema,
+//   resolvers,
+// });
 
-server.applyMiddleware({ app, path: '/graphql' });
+// server.applyMiddleware({ app, path: '/graphql' });
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
