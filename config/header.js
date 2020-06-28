@@ -8,18 +8,3 @@
  * Apollo Server, GraphQL, MongoDB Atlas and ElasticSearch
  *
  */
-
-import 'regenerator-runtime/runtime';
-import Basics from '../models/basics';
-
-const resolvers = {
-  Query: {
-    basics: async (parent, { id }) => {
-      const basics = await Basics.find(id).lean();
-
-      return basics;
-    },
-  },
-};
-
-export default resolvers;
