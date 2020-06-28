@@ -3,6 +3,3 @@
 /node_modules
 /dist-server
 /build
-*.*cache
-LICENSE
-yarn.lock
