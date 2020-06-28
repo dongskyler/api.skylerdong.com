@@ -9,7 +9,6 @@ jobs:
 node_js:
   - 14
   - 12
-  - 10
 
 install:
   - yarn --frozen-lockfile
