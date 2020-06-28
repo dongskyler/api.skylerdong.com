@@ -62,7 +62,7 @@
     "pug": "^3.0.0",
     "regenerator-runtime": "^0.13.5",
     "serve-favicon": "^2.5.0",
-    "uglify-js": "^2.6.0",
+    "uglify-js": "^3.10.0",
     "uuid": "^8.1.0"
   },
   "devDependencies": {

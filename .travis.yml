@@ -1,0 +1,19 @@
+language: node_js
+
+jobs:
+  include:
+    - os: linux
+      dist: bionic
+    - os: osx
+
+node_js:
+  - 14
+  - 12
+  - 10
+
+install:
+  - yarn --frozen-lockfile
+
+script:
+  - yarn build
+  - yarn test
