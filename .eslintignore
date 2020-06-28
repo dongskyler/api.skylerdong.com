@@ -1,4 +1,4 @@
-# .prettierignore
+# .eslintignore
 
 /node_modules
 /dist-server

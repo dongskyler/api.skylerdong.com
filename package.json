@@ -1,19 +1,27 @@
 {
   "name": "api.skylerdong.com",
   "version": "0.0.0",
+  "description": "Working repository for the back-end for my websites, built with Node, Express, Apollo Server, GraphQL, MongoDB Atlas and ElasticSearch",
+  "repository": "https://github.com/dongskyler/api.skylerdong.com.git",
+  "author": "Skyler Dong <skyler@skylerdong.com>",
   "private": true,
+  "license": "MIT",
   "scripts": {
-    "format": "prettier './server/**/*.js' --write",
-    "lint": "eslint './server/**/*.js' --cache --fix",
+    "ci": "yarn --frozen-lockfile",
+    "format": "prettier './**/*.{js,json,html,css,md}' --write",
+    "lint": "eslint './**/*.js' --cache --fix",
     "clean": "rimraf dist-server",
     "transpile": "babel ./server --out-dir dist-server",
-    "build": "npm-run-all clean transpile",
+    "build": "run-s clean transpile",
     "test": "echo 'No test specified yet' && exit 0",
-    "server": "node ./dist-server/bin/www",
-    "dev": "NODE_ENV=development npm-run-all build server",
-    "dev:watch": "nodemon --config ./nodemon.json",
-    "prod": "NODE_ENV=production npm-run-all build server",
-    "start": "yarn prod"
+    "serve": "node ./dist-server/bin/www",
+    "development": "nodemon --config ./nodemon.json",
+    "start": "run-s ci development",
+    "production": "NODE_ENV=production run-s ci build serve",
+    "refresh": "rm -rf ./node_modules/ && yarn --frozen-lockfile"
+  },
+  "engines": {
+    "node": ">=0.12 <0.14"
   },
   "jest": {
     "testEnvironment": "node"
@@ -24,8 +32,10 @@
     }
   },
   "lint-staged": {
-    "./server/**/*.js": [
-      "prettier --write",
+    "./**/*.{js,json,html,css,md}": [
+      "prettier --write"
+    ],
+    "./**/*.js": [
       "eslint --cache --fix"
     ]
   },
@@ -43,11 +53,14 @@
     "elasticsearch": "^16.7.1",
     "express": "~4.17.1",
     "express-graphql": "^0.9.0",
+    "faker": "^4.1.0",
     "graphql": "^14.0.0",
     "http-errors": "~1.7.3",
+    "mongodb": "^3.5.9",
     "mongoose": "^5.9.18",
     "morgan": "~1.10.0",
     "pug": "^3.0.0",
+    "regenerator-runtime": "^0.13.5",
     "serve-favicon": "^2.5.0",
     "uglify-js": "^3.10.0",
     "uuid": "^8.1.0"
@@ -61,6 +74,7 @@
     "eslint": "^7.2.0",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-graphql": "^4.0.0",
     "eslint-plugin-import": "^2.21.2",
     "eslint-plugin-prettier": "^3.1.4",
     "husky": "^4.2.5",
