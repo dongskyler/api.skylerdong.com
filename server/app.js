@@ -6,7 +6,7 @@ import logger from 'morgan';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import favicon from 'serve-favicon';
-import { ApolloServer } from 'apollo-server-express';
+// import { ApolloServer } from 'apollo-server-express';
 import indexRouter from './routes/index';
 
 // import schema from './schema';

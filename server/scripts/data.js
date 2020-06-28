@@ -5,7 +5,7 @@ const faker = require('faker');
 const generateUsers = async () => {
   const users = [];
 
-  for (let id = 1; id <= 100; ++id) {
+  for (let id = 1; id <= 100; id += 1) {
     const firstName = faker.name.firstName();
     const lastName = faker.name.lastName();
     const userName = faker.internet.userName();

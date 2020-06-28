@@ -35,7 +35,7 @@ const normalizePort = (val) => {
 /**
  * Get port from environment and store in Express.
  */
-const port = normalizePort(process.env.PORT || '9000');
+const port = normalizePort(process.env.PORT || '7020');
 app.set('port', port);
 
 /**
@@ -98,7 +98,7 @@ mongoose
   })
   .catch((err) => {
     console.log(
-      'Error: Cannot connect to MongoDB cluster ${process.env.MONGO_CLUSTER}!'
+      `Error: Cannot connect to MongoDB cluster ${process.env.MONGO_CLUSTER}!`
     );
     console.log(err);
   });
@@ -109,3 +109,7 @@ mongoose
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
+
+if (process.env.NODE_ENV === 'development') {
+  console.log(`The server is hosted at http://localhost:${port}`);
+}
