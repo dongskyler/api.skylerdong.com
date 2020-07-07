@@ -18,6 +18,7 @@ import bodyParser from 'body-parser';
 import favicon from 'serve-favicon';
 // import { ApolloServer } from 'apollo-server-express';
 import indexRouter from './routes/index';
+import resumeRouter from './routes/resume';
 
 // import schema from './schema';
 // import resolvers from './resolvers';
@@ -63,6 +64,7 @@ app.use(favicon(path.join(__dirname, '..', 'public', 'favicon.ico')));
 app.use(bodyParser.json()); // use body-parser middleware to parse incoming json
 
 app.use('/', indexRouter);
+app.use('/resume', resumeRouter);
 
 // if (process.env.NODE_ENV === "development") {
 //   app.use(
