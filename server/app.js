@@ -17,7 +17,6 @@ import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import favicon from 'serve-favicon';
 // import { ApolloServer } from 'apollo-server-express';
-
 import indexRouter from './routes/index';
 import resumeRouter from './routes/resume';
 
