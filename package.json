@@ -55,7 +55,7 @@
     "express-graphql": "^0.10.2",
     "faker": "^4.1.0",
     "graphql": "^14.0.0",
-    "http-errors": "~1.7.3",
+    "http-errors": "~1.8.0",
     "mongodb": "^3.5.9",
     "mongoose": "^5.9.22",
     "morgan": "~1.10.0",
