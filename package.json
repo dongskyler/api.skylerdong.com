@@ -52,7 +52,7 @@
     "dotenv": "^8.2.0",
     "elasticsearch": "^16.7.1",
     "express": "~4.17.1",
-    "express-graphql": "^0.9.0",
+    "express-graphql": "^0.10.2",
     "faker": "^4.1.0",
     "graphql": "^14.0.0",
     "http-errors": "~1.7.3",
