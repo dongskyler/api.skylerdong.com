@@ -13,9 +13,17 @@ import path from 'path';
 
 const router = express.Router();
 
-/* GET home page. */
 router.get('/', (req, res, next) => {
-  res.sendFile(path.join(__dirname, '..', '..', 'public', 'files', 'dong_tiannong_skyler_resume.pdf'));
+  res.sendFile(
+    path.join(
+      __dirname,
+      '..',
+      '..',
+      'public',
+      'files',
+      'dong_tiannong_skyler_resume.pdf'
+    )
+  );
 });
 
 export default router;
