@@ -10,6 +10,9 @@
 /dist-server
 /build
 
+# directories
+/documents
+
 # misc
 .DS_Store
 .DS_Store?
