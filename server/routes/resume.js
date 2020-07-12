@@ -19,9 +19,9 @@ router.get('/', (req, res, next) => {
       __dirname,
       '..',
       '..',
-      'public',
-      'files',
-      'dong_tiannong_skyler_resume.pdf'
+      'documents',
+      'resumes',
+      'DONG_tiannong_skyler_resume.pdf'
     )
   );
 });
