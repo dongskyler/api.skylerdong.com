@@ -47,3 +47,5 @@ const basicsSchema = gql`
     getBasics(search: String): Basics
   }
 `;
+
+export default basicsSchema;

@@ -10,6 +10,8 @@
  */
 import { v4 as uuidv4 } from 'uuid';
 
+/* eslint-disable */
+
 const resolvers = {
   Query: {
     message: (parent, { id }, { models }) => {
@@ -71,5 +73,7 @@ const resolvers = {
     },
   },
 };
+
+/* eslint-enable */
 
 export default resolvers;
