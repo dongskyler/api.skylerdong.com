@@ -12,6 +12,8 @@
 import 'regenerator-runtime/runtime';
 import Basics from '../models/basics';
 
+/* eslint-disable */
+
 const resolvers = {
   Query: {
     basics: async (parent, { id }) => {
@@ -21,5 +23,7 @@ const resolvers = {
     },
   },
 };
+
+/* eslint-enable */
 
 export default resolvers;

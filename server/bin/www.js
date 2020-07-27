@@ -103,9 +103,7 @@ mongoose
     );
   })
   .catch((err) => {
-    console.log(
-      `Error: Cannot connect to MongoDB cluster ${process.env.MONGO_CLUSTER}!`
-    );
+    console.log(`Error: Cannot connect to MongoDB cluster ${process.env.MONGO_CLUSTER}!`);
     console.log(err);
     process.exit(101);
   });
@@ -117,5 +115,5 @@ server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
 
-process.env.NODE_ENV === 'development' &&
-  console.log(`The server is hosted at http://localhost:${port}`);
+process.env.NODE_ENV === 'development'; // eslint-disable-line
+console.log(`The server is hosted at http://localhost:${port}`);

@@ -8,6 +8,9 @@
  * Apollo Server, GraphQL, MongoDB Atlas and ElasticSearch
  *
  */
+
+/* eslint-disable */
+
 const resolvers = {
   Query: {
     me: (parent, args, { me }) => {
@@ -23,11 +26,11 @@ const resolvers = {
 
   User: {
     messages: (user, args, { models }) => {
-      return Object.values(messages).filter(
-        (message) => message.userId === user.id
-      );
+      return Object.values(messages).filter((message) => message.userId === user.id);
     },
   },
 };
+
+/* eslint-enable */
 
 export default resolvers;
