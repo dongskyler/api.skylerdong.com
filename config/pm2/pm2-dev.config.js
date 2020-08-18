@@ -15,7 +15,7 @@ module.exports = {
     {
       ...commonConfig,
       env: {
-        PORT: 5036,
+        PORT: 7020,
         NODE_ENV: 'development',
       },
     },
