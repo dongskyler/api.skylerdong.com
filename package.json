@@ -51,7 +51,7 @@
     "@babel/preset-env": "^7.11.0",
     "apollo-server": "^2.16.0",
     "apollo-server-express": "^2.16.0",
-    "aws-sdk": "^2.720.0",
+    "aws-sdk": "^2.739.0",
     "axios": "^0.20.0",
     "body-parser": "^1.19.0",
     "clean-css": "^4.1.11",
