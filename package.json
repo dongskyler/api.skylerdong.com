@@ -1,29 +1,28 @@
 {
   "name": "api.skylerdong.com",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Working repository for the back-end for my websites, built with Node, Express, Apollo Server, GraphQL, MongoDB Atlas and ElasticSearch",
   "repository": "https://github.com/dongskyler/api.skylerdong.com.git",
-  "author": "Skyler Dong <skyler@skylerdong.com>",
-  "private": true,
+  "author": "Skyler Dong <dongskyler@gmail..com>",
   "license": "MIT",
   "scripts": {
     "ci": "yarn --frozen-lockfile",
-    "format": "prettier './**/*.{js,json,html,css,md}' --write",
-    "lint": "eslint './**/*.js' --cache --fix",
-    "clean": "rimraf dist-server",
-    "transpile": "babel ./server --out-dir dist-server",
-    "build": "run-s clean transpile",
+    "format": "prettier '**/*.{js,ts,json,html,md,css,scss}' --write",
+    "lint": "eslint '**/*.{js,ts}' --cache --fix",
+    "clean": "rm -rf dist-server",
+    "transpile": "babel server --out-dir dist-server",
+    "build": "yarn clean && yarn transpile",
     "test": "echo 'No test specified yet' && exit 0",
-    "serve": "node ./dist-server/bin/www",
+    "serve": "node dist-server/bin/www",
     "development": "nodemon --config ./nodemon.json",
-    "start": "run-s ci development",
+    "production": "NODE_ENV=production yarn build",
+    "start": "yarn development",
     "run:dev": "pm2 start ./config/pm2/pm2-dev.config.js",
     "run:prod": "pm2 start ./config/pm2/pm2-prod.config.js",
-    "production": "NODE_ENV=production run-s ci build serve",
     "refresh": "rm -rf ./node_modules/ && yarn --frozen-lockfile"
   },
   "engines": {
-    "node": ">=0.12 <0.14"
+    "node": ">=0.12 <=0.14"
   },
   "jest": {
     "testEnvironment": "node"
@@ -34,17 +33,26 @@
     }
   },
   "lint-staged": {
-    "./**/*.{js,json,html,css,md}": [
+    "**/*.{js,ts,json,html,md,css,scss}": [
       "prettier --write"
     ],
-    "./**/*.js": [
+    "**/*.{js,ts}": [
       "eslint --cache --fix"
     ]
   },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  },
   "dependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.11.4",
+    "@babel/preset-env": "^7.11.0",
     "apollo-server": "^2.16.0",
     "apollo-server-express": "^2.16.0",
     "aws-sdk": "^2.720.0",
+    "axios": "^0.20.0",
     "body-parser": "^1.19.0",
     "clean-css": "^4.1.11",
     "constantinople": "3.1.1",
@@ -69,10 +77,6 @@
     "uuid": "^8.1.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.10.5",
-    "@babel/core": "^7.10.5",
-    "@babel/preset-env": "^7.10.4",
-    "axios": "^0.19.2",
     "chai": "^4.2.0",
     "eslint": "^7.5.0",
     "eslint-config-airbnb-base": "^14.2.0",
@@ -82,12 +86,9 @@
     "eslint-plugin-import": "^2.21.2",
     "eslint-plugin-prettier": "^3.1.4",
     "husky": "^4.2.5",
-    "jest": "^26.0.1",
     "lint-staged": "^10.2.10",
-    "mocha": "^8.0.1",
+    "mocha": "^8.1.1",
     "nodemon": "^2.0.4",
-    "npm-run-all": "^4.1.5",
-    "prettier": "^2.0.5",
-    "rimraf": "^3.0.2"
+    "prettier": "^2.0.5"
   }
 }
