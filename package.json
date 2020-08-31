@@ -86,7 +86,7 @@
     "eslint-plugin-import": "^2.21.2",
     "eslint-plugin-prettier": "^3.1.4",
     "husky": "^4.2.5",
-    "lint-staged": "^10.2.10",
+    "lint-staged": "^10.2.13",
     "mocha": "^8.1.1",
     "nodemon": "^2.0.4",
     "prettier": "^2.0.5"
