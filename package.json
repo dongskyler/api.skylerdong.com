@@ -5,6 +5,7 @@
   "repository": "https://github.com/dongskyler/api.skylerdong.com.git",
   "author": "Skyler Dong <dongskyler@gmail..com>",
   "license": "MIT",
+  "private": true,
   "scripts": {
     "ci": "yarn --frozen-lockfile",
     "format": "prettier '**/*.{js,ts,json,html,md,css,scss}' --write",
@@ -58,7 +59,6 @@
     "cors": "^2.8.5",
     "debug": "~4.1.1",
     "dotenv": "^8.2.0",
-    "elasticsearch": "^16.7.1",
     "express": "~4.17.1",
     "express-graphql": "^0.11.0",
     "faker": "^4.1.0",
