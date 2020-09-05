@@ -64,7 +64,7 @@
     "faker": "^4.1.0",
     "graphql": "~14.7.0",
     "http-errors": "~1.8.0",
-    "mongodb": "^3.5.9",
+    "mongodb": "^3.6.1",
     "mongoose": "^5.10.0",
     "morgan": "~1.10.0",
     "pug": "^3.0.0",
