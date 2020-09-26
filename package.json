@@ -65,7 +65,7 @@
     "graphql": "~14.7.0",
     "http-errors": "~1.8.0",
     "mongodb": "^3.6.2",
-    "mongoose": "^5.10.3",
+    "mongoose": "^5.10.7",
     "morgan": "~1.10.0",
     "pug": "^3.0.0",
     "regenerator-runtime": "^0.13.7",
