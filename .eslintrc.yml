@@ -1,0 +1,36 @@
+---
+env:
+  node: true,
+  es2020: true,
+  mocha: true,
+
+parserOptions:
+  ecmaVersion: 2020
+  sourceType: module
+
+rules:
+  no-unused-vars:
+    - 2
+    - argsIgnorePattern: 'next'
+  prettier/prettier: 2
+
+overrides:
+  - files:
+      - '*.spec.js'
+      - '*.test.js'
+    rules:
+      func-names: 0
+
+plugins:
+  - graphql
+  - mocha
+  - chai-friendly
+  - prettier
+
+extends:
+  - airbnb-base
+  - eslint:recommended
+  - plugin:mocha/recommended
+  - plugin:chai-friendly/recommended
+  - plugin:prettier/recommended
+  - prettier

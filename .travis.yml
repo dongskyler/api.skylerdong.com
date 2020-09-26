@@ -10,7 +10,7 @@ node_js:
   - 14
 
 install:
-  - yarn --frozen-lockfile
+  - yarn --pure-lockfile
 
 script:
   - yarn build
