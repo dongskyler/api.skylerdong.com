@@ -47,7 +47,7 @@
     "morgan": "^1.10.0",
     "pug": "^3.0.0",
     "serve-favicon": "^2.5.0",
-    "uglify-js": "^3.12.4",
+    "uglify-js": "^3.16.0",
     "uuid": "^8.3.1"
   },
   "devDependencies": {
