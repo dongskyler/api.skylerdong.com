@@ -43,7 +43,7 @@
     "graphql": "^14.7.0",
     "http-errors": "^1.8.0",
     "mongodb": "^3.6.2",
-    "mongoose": "^5.11.10",
+    "mongoose": "^6.8.2",
     "morgan": "^1.10.0",
     "pug": "^3.0.0",
     "serve-favicon": "^2.5.0",
